@@ -9,13 +9,19 @@ Made by @minberrydiary aka Tulika 🌷
 ## What's inside
 
 ```
-bbokaris-kitchen/
-├── index.html            the whole site (HTML, CSS and JavaScript in one file)
-├── manifest.webmanifest  tells phones this is an app (name, icons, colors)
-├── sw.js                 service worker, lets the site work offline
-├── assets/               logo, hero background, mascot
-└── icons/                app icons (normal, maskable, and iPhone)
+index.html               the whole site (HTML, CSS and JavaScript in one file)
+manifest.webmanifest     tells phones this is an app (name, icons, colors)
+sw.js                    service worker, lets the site work offline
+logo.webp                the round logo
+hero.jpg                 the star background at the top of the home page
+mascot.jpg               Bbokari on the Vote tab
+icon-192.png             app icon
+icon-512.png             app icon (large)
+icon-maskable-512.png    app icon for Android's round and squircle shapes
+apple-touch-icon.png     app icon for iPhone
 ```
+
+All files sit together in one place. There are **no sub-folders**, so you can upload them straight to GitHub.
 
 ## 1. Try it on your computer
 
@@ -30,13 +36,13 @@ The app features (install button, offline mode) need **https**. These are free a
 
 **GitHub Pages**
 1. Make a new public repository on github.com.
-2. Upload everything from this folder (keep the `assets` and `icons` folders).
+2. Click "Add file", then "Upload files". Unzip the ZIP first, select **all 11 files** and drag them in (or use "choose your files"). Don't upload the ZIP itself, because GitHub can't unzip it. Then click "Commit changes".
 3. Go to Settings, then Pages. Under "Build and deployment", choose "Deploy from a branch", pick `main` and `/ (root)`, and save.
 4. After a minute your site is live at `https://YOUR-USERNAME.github.io/YOUR-REPO/`
 
 **Netlify Drop (fastest)**
 1. Go to app.netlify.com/drop.
-2. Drag this whole folder onto the page. You get a link right away.
+2. Drag the unzipped folder onto the page. You get a link right away.
 
 ## 3. Install it as an app
 
@@ -61,7 +67,7 @@ Each ingredient row looks like `["Name", amount, kind]`. The kind is grams-per-c
 
 ## 5. Updating the site after you change something
 
-Phones save a copy of the site so it works offline. To make sure everyone gets your new version, open `sw.js` and change `bbokaris-kitchen-v1` to `bbokaris-kitchen-v2` (then v3 and so on), then upload the files again.
+Phones save a copy of the site so it works offline. To make sure everyone gets your new version, open `sw.js` and change `bbokaris-kitchen-v2` to `bbokaris-kitchen-v3` (then v4 and so on), then upload the files again.
 
 ## Troubleshooting
 

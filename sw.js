@@ -1,7 +1,7 @@
 // Bbokari's Kitchen service worker: makes the site work offline.
-// When you change any file, bump the number in CACHE (v1 -> v2) so phones get the update.
-const CACHE = "bbokaris-kitchen-v1";
-const CORE = ["./", "index.html", "manifest.webmanifest", "assets/logo.webp", "assets/hero.jpg", "assets/mascot.jpg", "icons/icon-192.png", "icons/icon-512.png"];
+// When you change any file, bump the number in CACHE (v2 -> v3) so phones get the update.
+const CACHE = "bbokaris-kitchen-v2";
+const CORE = ["./", "index.html", "manifest.webmanifest", "logo.webp", "hero.jpg", "mascot.jpg", "icon-192.png", "icon-512.png"];
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
