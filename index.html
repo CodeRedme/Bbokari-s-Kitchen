@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#FFF6C9">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<title>Bbokari's Kitchen: The Brownie Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF6C9;--sun:#FFE59A;--lav:#F3D6FB;--card:#FFFDF0;--ink:#3B2314;--soft:#6B4A33;--acc:#F0883A;--heroop:1;--blend:multiply}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#24160D;--sun:#4A3A14;--lav:#3D2A4A;--card:#33200F;--ink:#FFEFC8;--soft:#D9BC96;--heroop:.2;--blend:normal}}
+:root[data-theme="dark"]{--bg:#24160D;--sun:#4A3A14;--lav:#3D2A4A;--card:#33200F;--ink:#FFEFC8;--soft:#D9BC96;--heroop:.2;--blend:normal}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 Nunito,system-ui,sans-serif}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.15;margin:0}
+h2{font-size:1.9rem;margin-bottom:.5rem}h3{font-size:1.25rem}
+p{max-width:62ch}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:2px solid var(--sun);display:flex;gap:.5rem;padding:.6rem 1rem;overflow-x:auto;white-space:nowrap}
+nav button{font:700 .95rem Nunito,sans-serif;color:var(--ink);background:transparent;border:2px solid var(--ink);border-radius:999px;padding:.4rem 1rem;cursor:pointer}
+nav button[aria-selected="true"]{background:var(--acc);color:#3B2314}
+main{max-width:860px;margin:auto;padding:1.5rem 1rem 3rem}
+.hero{position:relative;isolation:isolate;text-align:center;padding:2.2rem 1rem 2.8rem;margin:-1.5rem -1rem 0}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:url(assets/hero.jpg) center/cover;opacity:var(--heroop)}
+.hero img{width:min(290px,72vw);height:auto;box-shadow:0 0 0 5px var(--sun),0 0 0 8px var(--ink);border-radius:50%;display:block;margin:0 auto}
+.hero h1{font-size:clamp(2.1rem,7vw,3.5rem);font-weight:800;margin:1.1rem 0 .4rem}
+.hero p{margin:0 auto 1.2rem;font-size:1.1rem}
+.btn{display:inline-block;font:700 1rem Nunito,sans-serif;background:var(--acc);color:#3B2314;border:2px solid #3B2314;border-radius:999px;padding:.6rem 1.3rem;margin:.25rem;cursor:pointer}
+.btn.alt{background:var(--card);color:var(--ink);border-color:var(--ink)}
+.card{background:var(--card);border:2px dashed var(--ink);border-radius:14px;padding:1.1rem 1.3rem;margin:1rem 0}
+.card.sun{background:var(--sun);border-style:solid}.card.lav{background:var(--lav);border-style:solid}
+.pill{display:inline-block;font-size:.8rem;font-weight:700;background:var(--card);color:var(--ink);border:1.5px solid var(--ink);border-radius:99px;padding:0 .65rem;margin:.15rem .3rem .15rem 0}
+ul.ing{list-style:none;padding:0;margin:.6rem 0}
+ul.ing li{border-bottom:1px dotted var(--soft);padding:.25rem 0}
+ul.ing li label{display:flex;align-items:center;gap:.6rem;font-weight:400;font-size:1rem;margin:0;cursor:pointer}
+ul.ing li span{flex:1}
+ul.ing b{text-align:right}
+ul.ing input{width:1.15rem;height:1.15rem;accent-color:var(--acc);flex:none}
+ul.ing input:checked~span,ul.ing input:checked~b{text-decoration:line-through;opacity:.55}
+.tm{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;background:var(--card);color:var(--ink);border:2px solid var(--ink);border-radius:12px;padding:.6rem .8rem;margin:.9rem 0}
+.tm .tmDisp{font:800 1.9rem Fraunces,Georgia,serif;min-width:5.6rem}
+.tm button{font:700 .9rem Nunito,sans-serif;color:var(--ink);background:transparent;border:2px solid var(--ink);border-radius:999px;padding:.3rem .8rem;cursor:pointer}
+.tm button.go{background:var(--acc);color:#3B2314}
+.tm .tmMsg{flex-basis:100%;font-weight:700}
+.tm.done{background:var(--acc);color:#3B2314}
+.tm.done button{color:#3B2314;border-color:#3B2314}
+ol{padding-left:1.3rem}
+.note{font-size:.92rem;color:var(--soft)}
+.bar{display:flex;height:2.3rem;border:2px solid var(--ink);border-radius:8px;overflow:hidden;margin:.3rem 0 .8rem}
+.bar span{display:flex;align-items:center;justify-content:center;font:700 .75rem Nunito,sans-serif;overflow:hidden}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1rem;font-size:.85rem;margin:.4rem 0 1rem}
+.legend i{display:inline-block;width:.9rem;height:.9rem;border:1.5px solid var(--ink);border-radius:3px;vertical-align:-2px;margin-right:.3rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{text-align:left;padding:.4rem .5rem;border-bottom:1px solid var(--soft)}
+.ctl{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.8rem;margin:1rem 0}
+label{display:block;font-weight:700;font-size:.9rem;margin-bottom:.2rem}
+select,input[type=number]{width:100%;font:inherit;color:var(--ink);background:var(--card);border:2px solid var(--ink);border-radius:10px;padding:.5rem}
+.tog button{font:700 .95rem Nunito,sans-serif;color:var(--ink);background:var(--card);border:2px solid var(--ink);padding:.45rem 1rem;cursor:pointer}
+.tog button:first-child{border-radius:10px 0 0 10px}.tog button:last-child{border-radius:0 10px 10px 0;border-left:0}
+.tog button[aria-pressed="true"]{background:var(--acc);color:#3B2314}
+.out{background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:1.1rem 1.3rem;box-shadow:6px 6px 0 var(--sun)}
+.warn{background:var(--lav);border-radius:10px;padding:.5rem .8rem;margin:.6rem 0;font-size:.92rem}
+.vrow{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.vrow img{height:190px;width:auto;mix-blend-mode:var(--blend);border-radius:12px}
+footer{text-align:center;font-size:.85rem;color:var(--soft);padding:1.5rem 1rem 2rem;border-top:2px solid var(--sun)}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<nav role="tablist" aria-label="Sections">
+<button role="tab" data-tab="home" aria-selected="true">Home</button>
+<button role="tab" data-tab="recipes" aria-selected="false">Recipes</button>
+<button role="tab" data-tab="science" aria-selected="false">Brownie Science</button>
+<button role="tab" data-tab="calc" aria-selected="false">Calculator</button>
+<button role="tab" data-tab="vote" aria-selected="false">Vote</button>
+<button role="tab" data-tab="msg" aria-selected="false">Message box</button>
+<button role="tab" data-tab="about" aria-selected="false">About and sources</button>
+</nav>
+<main>
+<section id="home">
+<div class="hero">
+<img src="assets/logo.webp" alt="Bbokari's Kitchen logo: a yellow chick in a chef hat holding a brownie" width="290" height="290">
+<h1>The Brownie Lab</h1>
+<p>Felix-inspired brownies, measured in grams and checked with numbers.</p>
+<button class="btn" data-go="calc">Open the calculator</button>
+<button class="btn alt" data-go="science">See the brownie science</button>
+<button class="btn alt" data-go="msg">Leave a message</button>
+</div>
+<div class="card sun"><h3>Recipes</h3><p>Two fan-reconstructed versions of the brownies from Felix's kitchen vlog, with a spot for my own tested version.</p><button class="btn alt" data-go="recipes">Read the recipes</button></div>
+<div class="card lav"><h3>Calculator</h3><p>Tell it how many people you're baking for or which pan you have, and every ingredient scales for you.</p><button class="btn alt" data-go="calc">Scale a recipe</button></div>
+<div class="card"><h3>Coming later</h3><p>Members' favorite foods, with their own sources and test bakes.</p></div>
+</section>
+
+<section id="recipes" hidden>
+<h2>Recipes</h2>
+<p class="note">Nobody has an official written recipe with exact amounts from Felix. Both versions below are fan reconstructions, and I haven't test-baked them yet.</p>
+<div id="recipeCards"></div>
+</section>
+
+<section id="science" hidden>
+<h2>Brownie Science</h2>
+<p>Each bar shows how much of the batter (by weight) is butter, sugar, flour, chocolate, cocoa and eggs.</p>
+<div id="bars"></div>
+<div class="legend" id="legend"></div>
+<table id="stats"></table>
+<div class="card sun"><h3>What the numbers say</h3>
+<p><b>Vlog version:</b> low flour, and lots of butter, sugar and chocolate. That points to fudgy. The bread flour may add a chewy edge, and only a little baking powder means it stays dense, not cakey.</p>
+<p><b>Big-batch version:</b> about half the flour share, and nearly four times as much sugar as flour. Expect it to be gooier and sweeter, close to molten.</p></div>
+<p class="note">How I counted: eggs at 50 g each, everything else by weight, small items like vanilla and salt left out. These are readings of the ratios, and the test bakes will show if they hold up.</p>
+</section>
+
+<section id="calc" hidden>
+<h2>Brownie calculator</h2>
+<div class="tog" role="group" aria-label="Scale by">
+<button data-mode="people" aria-pressed="true">By people</button><button data-mode="pan" aria-pressed="false">By pan size</button>
+</div>
+<div class="ctl">
+<div><label for="rec">Recipe</label><select id="rec"></select></div>
+<div id="gPeople"><label for="ppl">How many people?</label><input id="ppl" type="number" min="1" max="200" value="6"></div>
+<div id="gEach"><label for="each">Pieces each</label><input id="each" type="number" min="1" max="6" value="2"></div>
+<div id="gPan" hidden><label for="pan">Pan</label><select id="pan"></select></div>
+<div><label for="units">Units</label><select id="units"><option value="g">Grams</option><option value="cup">Cups and spoons</option></select></div>
+</div>
+<div class="out" id="calcOut" aria-live="polite"></div>
+<div id="calcTimer"></div>
+</section>
+
+<section id="vote" hidden>
+<h2>Pick your brownie style</h2>
+<div class="vrow">
+<img src="assets/mascot.jpg" alt="Bbokari the chick in a chef hat holding a brownie">
+<div><p>What's your perfect brownie?</p>
+<div class="tog" role="group" aria-label="Brownie style">
+<button data-v="fudgy" aria-pressed="false">Fudgy</button><button data-v="chewy" aria-pressed="false">Chewy</button><button data-v="cakey" aria-pressed="false">Cakey</button>
+</div></div>
+</div>
+<p id="voteOut" class="card sun" style="margin-top:1.2rem">Choose a style to see which recipe fits.</p>
+<p class="note">Your pick is saved on your device only.</p>
+<a id="formLink" class="btn" hidden target="_blank" rel="noopener">Vote in the community poll</a>
+</section>
+
+<section id="msg" hidden>
+<h2>Message box</h2>
+<p>Leave me a note about the recipes, your brownie results, or just say hi. It's anonymous, so you don't need a name, email or account.</p>
+<div class="card sun"><h3>Before you send</h3><p>Please don't include personal details like your full name, phone number, school or address. Anonymous messages can't get a reply, but I read them.</p></div>
+<a id="msgLink" class="btn" target="_blank" rel="noopener" hidden>Send an anonymous message</a>
+<p class="note">The button opens NGL in a new tab. NGL is a separate app with its own rules, and your message stays anonymous.</p>
+<p id="msgSoon" class="card">The message box is opening soon. Check back in a bit!</p>
+</section>
+
+<section id="about" hidden>
+<h2>About and sources</h2>
+<div class="card"><h3>Fan project note</h3>
+<p>Bbokari's Kitchen is an unofficial fan project made with love. It isn't affiliated with Stray Kids, JYP Entertainment or Felix. Bbokari is a SKZOO character, and the character belongs to its original creators. I made the logo and wallpaper layouts myself in Canva.</p></div>
+<div class="card sun"><h3>Where the recipes come from</h3>
+<ul>
+<li>Fan-written transcriptions of the brownie recipe from Felix's kitchen vlog, shared on Tumblr and TikTok.</li>
+<li>A baking blog that recreated the recipe and notes Felix didn't give exact quantities.</li>
+<li>A TikTok caption saying Felix shared the big-batch version with a YouTuber. I couldn't verify that claim.</li>
+</ul>
+<p class="note">The versions disagree on some amounts, such as butter and chocolate, so I used the most common ones. Every ingredient amount here is an estimate until I test it.</p></div>
+<div class="card lav"><h3>Coming later</h3><p>Members' favorite foods, more brownie tests, and the full data analysis.</p></div>
+</section>
+</main>
+<footer>Unofficial fan project. Not affiliated with Stray Kids, JYP Entertainment or Felix.<br><b>Made by @minberrydiary aka Tulika🌷</b></footer>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const MSG_URL="https://ngl.link/_.minberry_"; // anonymous message link
+const FORM_URL=""; // paste a Google Form or YouTube poll link here to show the poll button
+/* ingredient rows: [name, amount, kind]  kind: grams per cup | "egg" | "tsp" (amount is teaspoons) */
+const R={
+a:{name:"Felix's vlog brownies",tag:"Small batch",pan:64,pieces:12,panName:"8x8 in pan",
+ing:[["Unsalted butter, melted",115,227],["Cocoa powder",30,85],["Caster sugar",100,200],["Light brown sugar",100,213],["Plain flour",100,125],["Bread flour",20,125],["Chocolate, chopped or melted",150,170],["Eggs",2,"egg"],["Vanilla extract",.5,"tsp"],["Espresso powder",1,"tsp"],["Baking powder",.5,"tsp"],["Salt",.1,"tsp"]],
+steps:["Heat the oven to 180°C (350°F) and line an 8x8 in pan with baking paper.","Whisk the melted butter, cocoa, both sugars, vanilla and espresso. Beat in the eggs one at a time.","Mix the flours, baking powder and salt, then fold into the wet mix until just combined.","Fold in the chocolate, pour into the pan and bake 20 to 25 minutes, until the edges are set and the middle is a little soft."]},
+b:{name:"Big-batch Felix brownies",tag:"Large pan",pan:117,pieces:24,panName:"9x13 in pan",
+ing:[["Dark chocolate",227,170],["Cocoa powder",63,85],["Unsalted butter",284,227],["Plain flour",130,125],["White sugar",400,200],["Brown sugar",110,213],["Eggs",6,"egg"],["Vanilla extract",2,"tsp"],["Salt",1,"tsp"],["Espresso powder",3,"tsp"]],
+steps:["Heat the oven to 180°C (350°F) and line a 9x13 in pan.","Melt the chocolate with the butter, then whisk in the cocoa, sugars, vanilla and espresso. Beat in the eggs.","Fold in the flour and salt until just combined, pour into the pan and bake about 20 to 25 minutes."]}};
+const PANS={"8x8 in pan":64,"9x9 in pan":81,"9 in round pan":64,"9x13 in pan":117};
+const FR={0:"",.125:"⅛",.25:"¼",.375:"⅜",.5:"½",.625:"⅝",.75:"¾",.875:"⅞"};
+function frac(x,s){const n=Math.round(x/s)*s,w=Math.floor(n+1e-9),r=+(n-w).toFixed(3),t=FR[r]||"";return w>0?w+t:(t||"0")}
+function amt(it,f,u){const[,v,k]=it,x=v*f;
+if(k==="egg"){const e=Math.max(.5,Math.round(x*2)/2);return frac(e,.5)+(e===1?" egg":" eggs")+(e%1?" (beat 1 egg, use half)":"")}
+if(k==="tsp"){if(x<.125)return"a pinch";return x>=3?frac(x/3,.5)+" tbsp":frac(x,.25)+" tsp"}
+if(u==="g")return(x<50?Math.round(x):Math.round(x/5)*5)+" g";
+const c=x/k;if(c>=.25)return frac(c,.125)+(Math.round(c/.125)*.125>1?" cups":" cup");const tb=c*16;return tb>=1?frac(tb,.5)+" tbsp":frac(tb*3,.25)+" tsp"}
+const list=(k,f,u)=>"<ul class=\"ing\">"+R[k].ing.map(it=>`<li><label><input type="checkbox"><span>${it[0]}</span><b>${amt(it,f,u)}</b></label></li>`).join("")+"</ul>";
+
+/* tabs */
+const TABS=["home","recipes","science","calc","vote","msg","about"];
+function show(id){TABS.forEach(t=>{$("#"+t).hidden=t!==id;$('[data-tab="'+t+'"]').setAttribute("aria-selected",t===id)});scrollTo(0,0)}
+$$("[data-tab]").forEach(b=>b.onclick=()=>show(b.dataset.tab));
+$$("[data-go]").forEach(b=>b.onclick=()=>show(b.dataset.go));
+
+
+/* bake timer (one shared timer, shown in each recipe and in the calculator) */
+const T={total:1200,left:1200,end:0,run:false,id:0};let AC;
+function tmHTML(){return '<div class="tm" role="group" aria-label="Bake timer"><span class="tmDisp" aria-hidden="true">20:00</span><button data-t="20">20 min</button><button data-t="25">25 min</button><button data-t="go" class="go">Start</button><button data-t="reset">Reset</button><span class="tmMsg" role="status"></span></div>'}
+function tmDraw(){const s=Math.max(0,Math.ceil(T.left)),t=String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");
+$$(".tmDisp").forEach(e=>e.textContent=t);$$('[data-t="go"]').forEach(b=>b.textContent=T.run?"Pause":"Start");
+$$(".tm").forEach(e=>e.classList.toggle("done",T.left<=0));$$(".tmMsg").forEach(e=>e.textContent=T.left<=0?"Time to check your brownies!":"")}
+function beep(){try{if(AC)[0,.35,.7].forEach(d=>{const o=AC.createOscillator(),g=AC.createGain(),t=AC.currentTime+d;o.frequency.value=880;o.connect(g);g.connect(AC.destination);g.gain.setValueAtTime(.2,t);g.gain.setValueAtTime(0,t+.2);o.start(t);o.stop(t+.25)})}catch(e){}try{navigator.vibrate&&navigator.vibrate([200,100,200])}catch(e){}}
+function tick(){T.left=(T.end-Date.now())/1000;if(T.left<=0){T.left=0;T.run=false;clearInterval(T.id);beep()}tmDraw()}
+function tmClick(k){if(k==="20"||k==="25"){clearInterval(T.id);T.run=false;T.total=T.left=+k*60}
+else if(k==="reset"){clearInterval(T.id);T.run=false;T.left=T.total}
+else if(k==="go"){try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();AC.resume&&AC.resume()}catch(e){}
+if(T.run){clearInterval(T.id);T.run=false}else{if(T.left<=0)T.left=T.total;T.end=Date.now()+T.left*1000;T.run=true;T.id=setInterval(tick,250)}}tmDraw()}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-t]");if(b)tmClick(b.dataset.t)});
+
+/* recipes */
+$("#recipeCards").innerHTML=["a","b"].map((k,i)=>`<div class="card ${i?"lav":"sun"}"><h3>${R[k].name}</h3><span class="pill">Fan-reconstructed</span><span class="pill">${R[k].tag}</span><span class="pill">${R[k].panName}</span><span class="pill">Not yet test-baked</span>${list(k,1,"g")}<ol>${R[k].steps.map(s=>"<li>"+s+"</li>").join("")}</ol>${tmHTML()}</div>`).join("");
+
+tmDraw();
+/* science */
+const G=[["Butter",/butter/i,"#F0883A","#3B2314"],["Sugar",/sugar/i,"#F2C94C","#3B2314"],["Flour",/flour/i,"#FFF6C9","#3B2314"],["Chocolate",/chocolate/i,"#4A2C1A","#FFFFFF"],["Cocoa",/cocoa/i,"#7A4A2B","#FFFFFF"],["Eggs",/^eggs/i,"#B98BD6","#3B2314"]];
+function shares(k){const g={};R[k].ing.forEach(it=>{const w=it[2]==="egg"?it[1]*50:typeof it[2]==="number"?it[1]:0;if(!w)return;const grp=G.find(x=>x[1].test(it[0]));g[grp[0]]=(g[grp[0]]||0)+w});return g}
+$("#legend").innerHTML=G.map(x=>`<span><i style="background:${x[2]}"></i>${x[0]}</span>`).join("");
+let rows="";$("#bars").innerHTML=["a","b"].map(k=>{const s=shares(k),t=Object.values(s).reduce((a,b)=>a+b,0);
+rows+=`<tr><td>${R[k].name}</td><td>${(s.Butter/s.Flour).toFixed(1)} : 1</td><td>${(s.Sugar/s.Flour).toFixed(1)} : 1</td><td>${Math.round(100*s.Flour/t)}%</td></tr>`;
+return `<h3>${R[k].name}</h3><div class="bar" role="img" aria-label="Ingredient shares">${G.map(x=>{const p=100*(s[x[0]]||0)/t;return `<span style="flex:${p};background:${x[2]};color:${x[3]}">${p>7?Math.round(p)+"%":""}</span>`}).join("")}</div>`}).join("");
+$("#stats").innerHTML="<tr><th>Recipe</th><th>Butter to flour</th><th>Sugar to flour</th><th>Flour share</th></tr>"+rows;
+
+/* calculator */
+$("#calcTimer").innerHTML=tmHTML();tmDraw();
+const st={mode:"people",r:"a",pan:"8x8 in pan",u:"g"};
+$("#rec").innerHTML=Object.keys(R).map(k=>`<option value="${k}">${R[k].name}</option>`).join("");
+$("#pan").innerHTML=Object.keys(PANS).map(p=>`<option>${p}</option>`).join("");
+const num=(id,d)=>Math.max(1,Math.min(200,parseFloat($(id).value)||d));
+function calc(){const r=R[st.r];let f,pieces,note;
+if(st.mode==="people"){pieces=num("#ppl",1)*num("#each",1);f=pieces/r.pieces;const area=f*r.pan,best=Object.entries(PANS).reduce((a,b)=>Math.abs(b[1]-area)<Math.abs(a[1]-area)?b:a);note=`Closest pan: ${best[0]}. Using a different pan? Switch to "By pan size" so the thickness stays right.`}
+else{f=PANS[st.pan]/r.pan;pieces=Math.round(f*r.pieces);note="Scaling by pan area keeps the brownies as thick as the original batch."}
+let w="";if(f>2.5)w+=`<div class="warn">That's a big batch. Mix it in two bowls and bake in two pans if your oven is small.</div>`;
+if(f<.5)w+=`<div class="warn">That's a small batch. Weigh in grams, because tiny spoon amounts are hard to measure.</div>`;
+$("#calcOut").innerHTML=`<h3>${r.name}</h3><p>Multiplier ×${f.toFixed(2)}. Makes about ${pieces} pieces.</p>${list(st.r,f,st.u)}<p class="note">${note}</p>${w}<p class="note">Bake at 180°C (350°F). Start checking at 20 minutes: the edges should be set and a toothpick should come out with a few moist crumbs. The piece count is an estimate until I test-bake.</p>`}
+$$("[data-mode]").forEach(b=>b.onclick=()=>{st.mode=b.dataset.mode;$$("[data-mode]").forEach(x=>x.setAttribute("aria-pressed",x===b));$("#gPeople").hidden=$("#gEach").hidden=st.mode!=="people";$("#gPan").hidden=st.mode!=="pan";calc()});
+$("#rec").onchange=e=>{st.r=e.target.value;calc()};$("#pan").onchange=e=>{st.pan=e.target.value;calc()};$("#units").onchange=e=>{st.u=e.target.value;calc()};
+$("#ppl").oninput=calc;$("#each").oninput=calc;calc();
+
+/* vote */
+const V={fudgy:"Fudgy fans: start with Felix's vlog brownies. Low flour and plenty of butter, sugar and chocolate should keep them dense and rich. The big-batch version is even gooier.",chewy:"Chewy fans: try Felix's vlog brownies. The bit of bread flour and the brown sugar are my best guess for that chewy edge.",cakey:"Neither recipe here is cakey, because both use very little flour. A cakey brownie needs more flour and baking powder, and I haven't tested one yet."};
+function pick(k,save){$$("[data-v]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===k));$("#voteOut").textContent=V[k];if(save)try{localStorage.setItem("bk-style",k)}catch(e){}}
+$$("[data-v]").forEach(b=>b.onclick=()=>pick(b.dataset.v,true));
+try{const s=localStorage.getItem("bk-style");if(s&&V[s])pick(s)}catch(e){}
+if(MSG_URL){$("#msgLink").href=MSG_URL;$("#msgLink").hidden=false;$("#msgSoon").hidden=true}
+if(FORM_URL){$("#formLink").href=FORM_URL;$("#formLink").hidden=false}
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+</script>
+</body>
+</html>

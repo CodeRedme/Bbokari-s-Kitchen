@@ -1,0 +1,30 @@
+{
+  "name": "Bbokari's Kitchen: The Brownie Lab",
+  "short_name": "Bbokari's Kitchen",
+  "description": "Felix-inspired brownie recipes, a scaling calculator, bake timer and brownie science. Unofficial fan project.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FFF6C9",
+  "theme_color": "#FFF6C9",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
